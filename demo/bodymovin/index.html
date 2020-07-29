@@ -2,11 +2,20 @@
 <html style="width: 100%;height: 100%">
 <head>
      <script src="../../build/player/lottie.js"></script>
+
+     <style media="screen">
+       .box {
+         width: 100%;
+         height: 400px;
+       }
+     </style>
 </head>
 <body style="background-color:#ccc; margin: 0px;height: 100%; font-family: sans-serif;font-size: 10px">
-
-<div style="width:100%;height:100%;background-color:#333;" id="bodymovin"></div>
-
+<div>
+<div class="box" style="background-color:#333;" id="bodymovin"></div>
+<div class="box" style="background-color:darkred;" id="mar"></div>
+<div class="box" style="background-color:#000;" id="mar2"></div>
+</div>
 <script>
 
     var animData = {
@@ -16,9 +25,36 @@
         prerender: true,
         autoplay: true,
         path: 'data.json'
-
     };
     var anim = bodymovin.loadAnimation(animData);
+
+var elem = document.getElementById('mar')
+    var animData2 = {
+        container: elem,
+        renderer: 'svg',
+        // wrapper: document.getElementById('mar'),
+        animType: 'html',
+        loop: true,
+        prerender: true,
+        autoplay: true,
+        rendererSettings: {
+            progressiveLoad:true,
+            preserveAspectRatio:'xMidYMid meet'
+        },
+        path: 'marker_test.json'
+    };
+    var anim2 = bodymovin.loadAnimation(animData2);
+
+    var animData3 = {
+        wrapper: document.getElementById('mar2'),
+        animType: 'html',
+        loop: true,
+        prerender: true,
+        autoplay: true,
+        path: 'rejection.json'
+    };
+    var anim3 = bodymovin.loadAnimation(animData3);
+
 </script>
 </body>
 </html>
